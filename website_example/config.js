@@ -1,6 +1,6 @@
 var api = "http://45.77.246.164:8183";
 
-var poolHost = "newbilitypool.com";
+var poolHost = "graft.newbilitypool.com";
 
 var email = "support@newbilitypool.com";
 
@@ -12,4 +12,4 @@ var blockchainExplorer = "http://blockexplorer.graft.network/block/{id}";
 
 var transactionExplorer = "http://blockexplorer.graft.network/tx/{id}";
 
-var themeCss = "themes/default-theme.css";
+var themeCss = "themes/nightly-mining-dark-theme.css";

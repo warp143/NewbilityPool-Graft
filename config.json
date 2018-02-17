@@ -1,5 +1,5 @@
 {
-    "coin": "Graft Network",
+    "coin": "Graft",
     "symbol": "GRF",
     "coinUnits": 1000000000,
     "coinDifficultyTarget": 120,
@@ -42,7 +42,6 @@
                 "port": 8888,
                 "difficulty": 30000,
                 "desc": "Nicehash",
-                "hidden": true
             }
         ],
         "varDiff": {

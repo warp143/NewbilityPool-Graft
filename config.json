@@ -41,8 +41,9 @@
             {
                 "port": 6666,
                 "difficulty": 30000,
-                "desc": "Hidden port"
-            },
+                "desc": "Hidden port",
+                "hidden": false
+            }
         ],
         "varDiff": {
             "minDiff": 2000,

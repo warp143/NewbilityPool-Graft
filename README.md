@@ -1,7 +1,7 @@
-cryptonote-universal-pool
+cryptonote-sumokoin-pool
 ====================
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, etc..
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 
@@ -52,7 +52,9 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
   * Each miners' individual stats (hashrate, shares submitted, pending balance, total paid, etc)
   * Blocks found (pending, confirmed, and orphaned)
 * An easily extendable, responsive, light-weight front-end using API to display data
-
+* Support for configuration using tls (https) in pool code to allowing the same for web frontend
+* Multiple modules can be started on command line instead of one or none.
+* Onishin's keepalive function https://github.com/perl5577/cpuminer-multi/commit/0c8aedb
 #### Extra features
 
 * Admin panel
@@ -65,10 +67,11 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * Miner login(wallet address) validation
 * Five configurable CSS themes
 * Universal blocks and transactions explorer based on [chainradar.com](http://chainradar.com)
-* FantomCoin & MonetaVerde support
+* FantomCoin support is not currently working after fixes to get node modules to work after Mar 23, 2016 fork.
+* MonetaVerde support not tested since changes for monero fork
 * Set fixed difficulty on miner client by passing "address" param with ".[difficulty]" postfix
 * Prevent "transaction is too big" error with "payments.maxTransactionAmount" option
-
+* Option to enable (simple) dynamic fee based on number of payees per transaction and option to have miner pay transfer fee instead of pool owner (applied to dynamic fee only)
 
 ### Community / Support
 
@@ -78,15 +81,8 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 #### Pools Using This Software
 
-* http://xminingpool.com
-* http://extremepool.org
-* http://noclaymorefee.com
-* http://nicepool.org
-* https://yaymining.com
-* http://bbr.unipool.pro
-* http://multihash.de
-* http://monero.rs
-* http://backup-pool.com/monero
+* http://xmr.poolto.be run by PCFil
+* http://xmr.cncoin.farm run by clintar
 
 Usage
 ===
@@ -121,7 +117,7 @@ sudo apt-get install git redis-server libboost1.55-all-dev nodejs-dev nodejs-leg
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/fancoder/cryptonote-universal-pool.git pool
+git clone https://github.com/billaue2/cryptonote-sumokoin-pool.git pool
 cd pool
 npm update
 ```
@@ -132,16 +128,16 @@ npm update
 Explanation for each field:
 ```javascript
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "ducknote",
+"coin": "Sumokoin",
 
 /* Used for front-end display */
-"symbol": "XDN",
+"symbol": "SUMO",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinUnits": 100000000,
+"coinUnits": 1000000000,
 
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinDifficultyTarget": 240,
+"coinDifficultyTarget": 60,
 
 "logging": {
 
@@ -159,7 +155,7 @@ Explanation for each field:
     },
 
     "console": {
-        "level": "info",
+        "level": "debug",
         /* Gives console output useful colors. If you direct that output to a log file
            then disable this feature to avoid nasty characters in the file. */
         "colors": true
@@ -177,7 +173,7 @@ Explanation for each field:
     "clusterForks": "auto",
 
     /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "ddehi53dwGSBEXdhTYtga2R3fS4y9hRz4YHAsLABJpH75yUd5EDQmuL3yDBj1mG6MMeDfydY9vp4zFVVNQ99FTYq2PpsFJP2y"
+    "poolAddress": "Sumoo64zh7dRFyB8dgDWZMLmzKBgGXYWZCG4NBF2VcvzEuiSQpMjyyiYJ1Ra696pZu56PPFQNBDdB1rZjyeX1RVKeWZgHg7pTxj"
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
@@ -188,17 +184,17 @@ Explanation for each field:
     "ports": [
         {
             "port": 3333, //Port for mining apps to connect to
-            "difficulty": 100, //Initial difficulty miners are set to
+            "difficulty": 5000, //Initial difficulty miners are set to
             "desc": "Low end hardware" //Description of port
         },
         {
-            "port": 5555,
-            "difficulty": 2000,
+            "port": 3334,
+            "difficulty": 10000,
             "desc": "Mid range hardware"
         },
         {
-            "port": 7777,
-            "difficulty": 10000,
+            "port": 3335,
+            "difficulty": 20000,
             "desc": "High end hardware"
         }
     ],
@@ -207,8 +203,8 @@ Explanation for each field:
        individual miners based on their hashrate in order to lower networking and CPU
        overhead. */
     "varDiff": {
-        "minDiff": 2, //Minimum difficulty
-        "maxDiff": 100000,
+        "minDiff": 500, //Minimum difficulty
+        "maxDiff": 50000,
         "targetTime": 100, //Try to get 1 share per this many seconds
         "retargetTime": 30, //Check to see if we should retarget every this many seconds
         "variancePercent": 30, //Allow time to very this % from target without retargeting
@@ -216,7 +212,7 @@ Explanation for each field:
     },
 
     /* Set difficulty on miner client side by passing <address> param with .<difficulty> postfix
-       minerd -u 4AsBy39rpUMTmgTUARGq2bFQWhDhdQNekK5v4uaLU699NPAnx9CubEJ82AkvD5ScoAZNYRwBxybayainhyThHAZWCdKmPYn.5000 */
+       minerd -u Sumoo64zh7dRFyB8dgDWZMLmzKBgGXYWZCG4NBF2VcvzEuiSQpMjyyiYJ1Ra696pZu56PPFQNBDdB1rZjyeX1RVKeWZgHg7pTxj.5000 */
     "fixedDiff": {
         "enabled": true,
         "separator": ".", // character separator between <address> and <difficulty>
@@ -245,12 +241,15 @@ Explanation for each field:
 "payments": {
     "enabled": true,
     "interval": 600, //how often to run in seconds
-    "maxAddresses": 50, //split up payments if sending to more than this many addresses
-    "mixin": 3, //number of transactions yours is indistinguishable from
-    "transferFee": 5000000000, //fee to pay for each transaction
-    "minPayment": 100000000000, //miner balance required before sending payment
-    "maxTransactionAmount": 0, //split transactions by this amount(to prevent "too big transaction" error)
-    "denomination": 100000000000 //truncate to this precision and store remainder
+    "maxAddresses": 10, //split up payments if sending to more than this many addresses
+    "mixin": 12, //number of transactions yours is indistinguishable from
+    "transferFee": 10000000, //fee to pay for each transaction, deducted from pool owner's balance
+    "minPayment": 2000000000, //miner balance required before sending payment
+    "maxTransactionAmount": 500000000000, //split transactions by this amount(to prevent "too big transaction" error)
+    "denomination": 10000000, //truncate to this precision and store remainder
+	"useDynamicTransferFee": true, // use (simple) dynamic transfer fee
+	"transferFeePerPayee": 4000000, // dynamic transfer fee per payee/transaction
+	"minerPayFee": true // miner pays (dynamic) transfer fee instead of pool owner 
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -265,7 +264,7 @@ Explanation for each field:
     "depth": 60,
     "poolFee": 1.8, //1.8% pool fee (2% total fee total including donations)
     "devDonation": 0.1, //0.1% donation to send to pool dev - only works with Monero
-    "coreDevDonation": 0.1 //0.1% donation to send to core devs - works with Bytecoin, Monero, Dashcoin, QuarazCoin, Fantoncoin, AEON and OneEvilCoin
+    "coreDevDonation": 0.1 //0.1% donation to send to core devs - works with Bytecoin, Monero, Dashcoin, QuarazCoin, Fantoncoin, AEON, Sumokoin, OneEvilCoin
 },
 
 /* AJAX API used for front-end website. */
@@ -282,13 +281,13 @@ Explanation for each field:
 /* Coin daemon connection details. */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 18081
+    "port": 19734
 },
 
 /* Wallet daemon connection details. */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 8082
+    "port": 19735
 },
 
 /* Redis connection into. */
@@ -377,7 +376,7 @@ node init.js
 The file `config.json` is used by default but a file can be specified using the `-config=file` command argument, for example:
 
 ```bash
-node init.js -config=config_backup.json
+node init.js -config=config_sumokoin.json
 ```
 
 This software contains four distinct modules:
@@ -414,13 +413,13 @@ var api = "http://poolhost:8117";
 var poolHost = "poolhost.com";
 
 /* IRC Server and room used for embedded KiwiIRC chat. */
-var irc = "irc.freenode.net/#ducknote";
+var irc = "irc.freenode.net/#sumokoin";
 
 /* Contact email address. */
 var email = "support@poolhost.com";
 
 /* Market stat display params from https://www.cryptonator.com/widget */
-var cryptonatorWidget = ["XDN-BTC", "XDN-USD", "XDN-EUR"];
+var cryptonatorWidget = ["SUMO-BTC", "SUMO-USD", "SUMO-EUR"];
 
 /* Download link to cryptonote-easy-miner for Windows users. */
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
@@ -457,7 +456,12 @@ the Node.js modules, and any config files that may have been changed.
 
 ### Setting up Testnet
 
-No cryptonote based coins have a testnet mode (yet) but you can effectively create a testnet with the following steps:
+Monero does have a testnet. Call daemon and simplewallet with --tesnet to connect to it.
+Downloading the testnet blockchain may still take a while to start usint testnet, so you can use this excellent 
+tutorial http://moneroexamples.github.io/private-testnet/ to set up a private testnet. Should work with other 
+coins, too, but below are original testnet instructions by server43 for reference, too.
+
+For cryptonote based coins that don't have a testnet mode (yet), you can effectively create a testnet with the following steps:
 
 * Open `/src/p2p/net_node.inl` and remove lines with `ADD_HARDCODED_SEED_NODE` to prevent it from connecting to mainnet (Monero example: http://git.io/0a12_Q)
 * Build the coin from source
@@ -492,9 +496,8 @@ curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"
 
 Donations
 ---------
-* BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`
-* MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
-
+* BTC: `16gHU8K5h3djmwAb6xUCaGsLe2z21L19Y6`
+* MRO: `4AabFTaEt6KG18tux7yqS8Fv63JoyXsitjGSksrXCqZwBeJKKnphSx4KNsocn5kqWg6cMjeuNzssTHeefHvN8m1V6QqseCH`
 Credits
 ===
 
@@ -503,7 +506,10 @@ Credits
 * [wallet42](http://moneropool.com) - Funded development of payment denominating and min threshold feature
 * [Wolf0](https://bitcointalk.org/index.php?action=profile;u=80740) - Helped try to deobfuscate some of the daemon code for getting a bug fixed
 * [Tacotime](https://bitcointalk.org/index.php?action=profile;u=19270) - helping with figuring out certain problems and lead the bounty for this project's creation
-
+* [fancoder] (https://github.com/fancoder) Initial cryptonote-universal-pool creator 
+ * BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`- 
+ * MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
+* [clintar] (https://github.com/clintar) Updates to support nodejs >0.10 and continuing updates
 License
 -------
 Released under the GNU General Public License v2

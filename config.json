@@ -1,8 +1,8 @@
 {
-    "coin": "ducknote",
-    "symbol": "XDN",
-    "coinUnits": 100000000,
-    "coinDifficultyTarget": 240,
+    "coin": "Graft Network",
+    "symbol": "GRF",
+    "coinUnits": 1000000000,
+    "coinDifficultyTarget": 120,
 
     "logging": {
         "files": {
@@ -11,7 +11,7 @@
             "flushInterval": 5
         },
         "console": {
-            "level": "info",
+            "level": "debug",
             "colors": true
         }
     },
@@ -19,35 +19,35 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "ddehi53dwGSBEXdhTYtga2R3fS4y9hRz4YHAsLABJpH75yUd5EDQmuL3yDBj1mG6MMeDfydY9vp4zFVVNQ99FTYq2PpsFJP2y",
+        "poolAddress": "GBRwvn38uNBCoytHSBK2SYVW9nmxDieTZ4PDHACdiKiTbDmF6KhNjYpSeWqo9CnUe8V5urpRf6PKiF7x8814dq9FJ3ZSMzm",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
         "ports": [
             {
                 "port": 3333,
-                "difficulty": 100,
+                "difficulty": 2000,
                 "desc": "Low end hardware"
             },
             {
-                "port": 5555,
-                "difficulty": 2000,
+                "port": 4444,
+                "difficulty": 10000,
                 "desc": "Mid range hardware"
             },
             {
-                "port": 7777,
-                "difficulty": 10000,
+                "port": 5555,
+                "difficulty": 20000,
                 "desc": "High end hardware"
             },
             {
                 "port": 8888,
-                "difficulty": 10000,
-                "desc": "Hidden port",
+                "difficulty": 30000,
+                "desc": "Nicehash",
                 "hidden": true
             }
         ],
         "varDiff": {
-            "minDiff": 100,
-            "maxDiff": 200000,
+            "minDiff": 2000,
+            "maxDiff": 100000,
             "targetTime": 100,
             "retargetTime": 30,
             "variancePercent": 30,
@@ -74,43 +74,46 @@
 
     "payments": {
         "enabled": true,
-        "interval": 600,
-        "maxAddresses": 50,
-        "mixin": 3,
-        "transferFee": 50000000,
-        "minPayment": 1000000000,
-        "maxTransactionAmount": 0,
-        "denomination": 1000000000
+        "interval": 10800,
+        "maxAddresses": 10,
+        "mixin": 9,
+        "transferFee": 10000000,
+        "minPayment": 2000000000,
+        "maxTransactionAmount": 500000000000,
+        "denomination": 10000000,
+        "useDynamicTransferFee": true,
+        "transferFeePerPayee": 4000000,
+        "minerPayFee": true
     },
 
     "blockUnlocker": {
         "enabled": true,
         "interval": 30,
-        "depth": 10,
-        "poolFee": 2,
-        "devDonation": 0.1,
+        "depth": 60,
+        "poolFee": 0.5,
+        "devDonation": 0,
         "coreDevDonation": 0.1,
-        "extraFeaturesDevDonation":0.1
+        "extraFeaturesDevDonation":0
     },
 
     "api": {
         "enabled": true,
         "hashrateWindow": 600,
-        "updateInterval": 5,
-        "port": 8117,
+        "updateInterval": 20,
+        "port": 8183,
         "blocks": 30,
         "payments": 30,
-        "password": "your_password"
+        "password": "wmg3956356"
     },
 
     "daemon": {
         "host": "127.0.0.1",
-        "port": 42081
+        "port": 19734
     },
 
     "wallet": {
         "host": "127.0.0.1",
-        "port": 8082
+        "port": 19735
     },
 
     "redis": {

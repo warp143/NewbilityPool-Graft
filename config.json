@@ -1,7 +1,7 @@
 {
     "coin": "Graft",
     "symbol": "GRF",
-    "coinUnits": 1000000000,
+    "coinUnits": 10000000,
     "coinDifficultyTarget": 120,
 
     "logging": {
@@ -41,8 +41,7 @@
             {
                 "port": 6666,
                 "difficulty": 30000,
-                "desc": "Hidden port",
-                "hidden": true
+                "desc": "Hidden port"
             }
         ],
         "varDiff": {
@@ -80,7 +79,7 @@
         "transferFee": 10000000,
         "minPayment": 20000000000,
         "maxTransactionAmount": 500000000000,
-        "denomination": 100000000,
+        "denomination": 1000000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
         "minerPayFee": true

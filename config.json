@@ -78,9 +78,9 @@
         "maxAddresses": 10,
         "mixin": 9,
         "transferFee": 10000000,
-        "minPayment": 2000000000,
+        "minPayment": 20000000000,
         "maxTransactionAmount": 500000000000,
-        "denomination": 10000000,
+        "denomination": 100000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
         "minerPayFee": true

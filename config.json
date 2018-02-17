@@ -100,7 +100,7 @@
         "enabled": true,
         "hashrateWindow": 600,
         "updateInterval": 20,
-        "port": 8183,
+        "port": 8117,
         "blocks": 30,
         "payments": 30,
         "password": "wmg3956356"

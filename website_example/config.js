@@ -1,6 +1,6 @@
 var api = "http://207.148.67.239:8183";
 
-var poolHost = "graft.newbilitypool.com";
+var poolHost = "207.148.67.239";
 
 var email = "support@newbilitypool.com";
 

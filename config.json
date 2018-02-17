@@ -1,7 +1,7 @@
 {
     "coin": "Graft",
     "symbol": "GRF",
-    "coinUnits": 10000000,
+    "coinUnits": 1000000000,
     "coinDifficultyTarget": 120,
 
     "logging": {
@@ -42,7 +42,7 @@
                 "port": 6666,
                 "difficulty": 30000,
                 "desc": "Hidden port"
-            }
+            },
         ],
         "varDiff": {
             "minDiff": 2000,

@@ -39,9 +39,10 @@
                 "desc": "High end hardware"
             },
             {
-                "port": 8888,
+                "port": 6666,
                 "difficulty": 30000,
-                "desc": "Nicehash"
+                "desc": "Hidden port",
+                "hidden": true
             }
         ],
         "varDiff": {
@@ -89,7 +90,7 @@
         "enabled": true,
         "interval": 30,
         "depth": 60,
-        "poolFee": 0.5,
+        "poolFee": 1.4,
         "devDonation": 0,
         "coreDevDonation": 0.1,
         "extraFeaturesDevDonation":0

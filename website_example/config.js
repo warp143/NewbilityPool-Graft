@@ -1,4 +1,4 @@
-var api = "http://207.148.67.239:8117";
+var api = "http://45.77.246.164:8183";
 
 var poolHost = "newbilitypool.com";
 

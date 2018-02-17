@@ -41,7 +41,7 @@
             {
                 "port": 8888,
                 "difficulty": 30000,
-                "desc": "Nicehash",
+                "desc": "Nicehash"
             }
         ],
         "varDiff": {

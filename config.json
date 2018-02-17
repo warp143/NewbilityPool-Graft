@@ -41,7 +41,7 @@
             {
                 "port": 6666,
                 "difficulty": 30000,
-                "desc": "Hidden port",
+                "desc": "Nicehash",
                 "hidden": false
             }
         ],
@@ -80,7 +80,7 @@
         "transferFee": 10000000,
         "minPayment": 20000000000,
         "maxTransactionAmount": 500000000000,
-        "denomination": 10000000000,
+        "denomination": 1000000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
         "minerPayFee": true

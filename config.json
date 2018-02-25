@@ -1,7 +1,7 @@
 {
     "coin": "Graft",
     "symbol": "GRF",
-    "coinUnits": 1000000000,
+    "coinUnits": 10000000000,
     "coinDifficultyTarget": 120,
 
     "logging": {
@@ -26,22 +26,22 @@
             {
                 "port": 3333,
                 "difficulty": 2000,
-                "desc": "Low end hardware"
+                "desc": "低端设备"
             },
             {
                 "port": 4444,
                 "difficulty": 10000,
-                "desc": "Mid range hardware"
+                "desc": "中端设备"
             },
             {
                 "port": 5555,
                 "difficulty": 20000,
-                "desc": "High end hardware"
+                "desc": "高端设备"
             },
             {
-                "port": 6666,
-                "difficulty": 30000,
-                "desc": "Nicehash",
+                "port": 8888,
+                "difficulty": 80000,
+                "desc": "运算力/Nicehash",
                 "hidden": false
             }
         ],
@@ -78,9 +78,9 @@
         "maxAddresses": 10,
         "mixin": 9,
         "transferFee": 10000000,
-        "minPayment": 20000000000,
+        "minPayment": 500000000000,
         "maxTransactionAmount": 500000000000,
-        "denomination": 1000000000,
+        "denomination": 10000000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
         "minerPayFee": true

@@ -1,8 +1,8 @@
-var api = "http://47.92.5.45:8183";
+var api = "http://106.15.200.191:8183";
 
 var poolHost = "graft-pool.newbilitypool.com.cn";
 
-var email = "support@newbilitypool.com";
+var email = "support@newbilitypool.com.cn";
 
 var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 

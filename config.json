@@ -1,6 +1,6 @@
 {
     "coin": "Graft",
-    "symbol": "GRF",
+    "symbol": "GRFT",
     "coinUnits": 10000000000,
     "coinDifficultyTarget": 120,
 
@@ -19,29 +19,34 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "G7GYv8uztaSGcdaeUCB54GPkwpuJZMEYENrzc8cpehhiBMCRfjjbbZ7favQwwi35dXbXGvdtkTwYMPeWcgxpX1DZK5TpGAv",
+        "poolAddress": "G7pxy2prztoh6p1xe4V9w3CNHzFJ8CeXrR68RbyrbBrNGAcbFVjtgfCdxeKgC81gtmXU6xDXW6KkZiRt1aBdq7SJ8deh1j2",
         "blockRefreshInterval": 1000,
-        "minerTimeout": 900,
+        "minerTimeout": 86520000,
         "ports": [
             {
                 "port": 3333,
                 "difficulty": 2000,
-                "desc": "低端设备"
+                "desc1": "低端设备",
+		        "desc2": "Low end hardware"
+
             },
             {
                 "port": 4444,
                 "difficulty": 10000,
-                "desc": "中端设备"
+                "desc1": "中端设备",
+		        "desc2": "Mid range hardware"
             },
             {
                 "port": 5555,
                 "difficulty": 20000,
-                "desc": "高端设备"
+                "desc1": "高端设备",
+		        "desc2": "High end hardware"
             },
             {
                 "port": 8888,
-                "difficulty": 80000,
-                "desc": "运算力/Nicehash",
+                "difficulty": 400000,
+                "desc1": "运算力/Nicehash",
+		        "desc2": "Nicehash",
                 "hidden": false
             }
         ],
@@ -103,7 +108,7 @@
         "port": 8183,
         "blocks": 30,
         "payments": 30,
-        "password": "VdLiEwQHQxHwqu"
+        "password": "Abcd1234"
     },
 
     "daemon": {

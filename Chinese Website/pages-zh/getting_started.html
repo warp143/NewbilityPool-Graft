@@ -47,7 +47,7 @@
     }
 </style>
 
-<h3>挖池链接信息</h3>
+<h3>矿池链接信息</h3>
 <div class="stats">
     <div><i class="fa fa-cloud"></i> 矿池地址: <span id="miningPoolHost"></span></div>
 </div>
@@ -57,7 +57,7 @@
     <div class="stats">
         <div><i class="fa fa-tachometer"></i> 端口: <span class="miningPort"></span></div>
         <div><i class="fa fa-unlock-alt"></i> 开始难度: <span class="miningPortDiff"></span></div>
-        <div><i class="fa fa-question"></i> 备注: <span class="miningPortDesc"></span></div>
+        <div><i class="fa fa-question"></i> 备注: <span class="miningPortDesc1"></span></div>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
         <tr>
             <td colspan="5">
                 <span>例子:</span>
-                <code>minerd -a cryptonight -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">钱包地址</span> -p x</code>
+                <code>minerd -a cryptonight -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">您的钱包地址</span> -p x</code>
             </td>
         </tr>
         <tr>
@@ -107,7 +107,7 @@
         <tr>
             <td colspan="5">
                 <span>例子:</span>
-                <code>yam -c x -M stratum+tcp://<span class="exampleAddress">钱包地址</span>:x@<span class="exampleHost"></span>:<span class="examplePort"></span>/xmr</code>
+                <code>yam -c x -M stratum+tcp://<span class="exampleAddress">您的钱包地址</span>:x@<span class="exampleHost"></span>:<span class="examplePort"></span>/xmr</code>
             </td>
         </tr>
         <tr>
@@ -120,7 +120,7 @@
         <tr>
             <td colspan="5">
                 <span>例子:</span>
-                <code>NsCpuCNMiner64 -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">钱包地址</span> -p x</code>
+                <code>NsCpuCNMiner64 -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">您的钱包地址</span> -p x</code>
             </td>
         </tr>
         <tr>
@@ -133,7 +133,7 @@
         <tr>
             <td colspan="5">
                 <span>例子:</span>
-                <code>NsGpuCNMiner -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">钱包地址</span> -p x</code>
+                <code>NsGpuCNMiner -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">您的钱包地址</span> -p x</code>
             </td>
         </tr>
         <tr>
@@ -146,7 +146,7 @@
         <tr>
             <td colspan="5">
                 <span>例子:</span>
-                <code>ccminer -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">钱包地址</span> -p x</code>
+                <code>ccminer -o stratum+tcp://<span class="exampleHost"></span>:<span class="examplePort"></span> -u <span class="exampleAddress">您的钱包地址</span> -p x</code>
             </td>
         </tr>
         </tbody>
@@ -169,7 +169,8 @@
                     var $portChild = $(miningPortTemplate);
                     $portChild.find('.miningPort').text(portData.port);
                     $portChild.find('.miningPortDiff').text(portData.difficulty);
-                    $portChild.find('.miningPortDesc').text(portData.desc);
+                    $portChild.find('.miningPortDesc1').text(portData.desc1);
+                    $portChild.find('.miningPortDesc2').text(portData.desc2);
                     $miningPortChildren.push($portChild);
                 }
                 $miningPorts.empty().append($miningPortChildren);
